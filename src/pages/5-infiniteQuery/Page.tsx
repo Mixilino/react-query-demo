@@ -3,7 +3,6 @@ import {
   Box,
   Alert,
   Paper,
-  Divider,
   Switch,
   FormControlLabel,
 } from "@mui/material";
@@ -19,7 +18,6 @@ export default function Page() {
   const [enableAutoScroll, setEnableAutoScroll] = useState(false);
   const pageSize = 5;
 
-  // Infinite query for "load more" pattern
   const {
     data: infiniteData,
     isLoading: infiniteLoading,

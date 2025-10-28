@@ -39,7 +39,7 @@ export const handlers = [
     }))
     
     return res(
-      ctx.delay(200), // 200ms delay
+      ctx.delay(800), // 800ms delay
       ctx.json({
         posts: simplifiedPosts,
         total: mockPosts.length,

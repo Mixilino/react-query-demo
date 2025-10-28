@@ -11,10 +11,7 @@ import { routeTree } from "./routeTree.gen";
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000, // 1 minute
-      cacheTime: 5 * 60 * 1000, // 5 minutes (gcTime in v5 was cacheTime in v3)
-    },
+    queries: { refetchOnWindowFocus: false },
   },
 });
 

@@ -18,6 +18,8 @@ const sidebarWidth = 200
 const navigation = [
   { to: '/', label: '0. Empty Page' },
   { to: '/use-query', label: '1. useQuery' },
+  { to: '/cache-stale-time', label: '2. Cache & Stale Time' },
+  { to: '/use-mutation', label: '3. useMutation' },
   { to: '/infinite-query', label: '9. Infinite Query' },
 ]
 

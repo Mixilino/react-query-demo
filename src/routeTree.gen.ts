@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UseQueryRouteImport } from './routes/use-query'
+import { Route as UseMutationRouteImport } from './routes/use-mutation'
 import { Route as InfiniteQueryRouteImport } from './routes/infinite-query'
+import { Route as CacheStaleTimeRouteImport } from './routes/cache-stale-time'
 import { Route as IndexRouteImport } from './routes/index'
 
 const UseQueryRoute = UseQueryRouteImport.update({
@@ -18,9 +20,19 @@ const UseQueryRoute = UseQueryRouteImport.update({
   path: '/use-query',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UseMutationRoute = UseMutationRouteImport.update({
+  id: '/use-mutation',
+  path: '/use-mutation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InfiniteQueryRoute = InfiniteQueryRouteImport.update({
   id: '/infinite-query',
   path: '/infinite-query',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CacheStaleTimeRoute = CacheStaleTimeRouteImport.update({
+  id: '/cache-stale-time',
+  path: '/cache-stale-time',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,31 +43,55 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cache-stale-time': typeof CacheStaleTimeRoute
   '/infinite-query': typeof InfiniteQueryRoute
+  '/use-mutation': typeof UseMutationRoute
   '/use-query': typeof UseQueryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cache-stale-time': typeof CacheStaleTimeRoute
   '/infinite-query': typeof InfiniteQueryRoute
+  '/use-mutation': typeof UseMutationRoute
   '/use-query': typeof UseQueryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cache-stale-time': typeof CacheStaleTimeRoute
   '/infinite-query': typeof InfiniteQueryRoute
+  '/use-mutation': typeof UseMutationRoute
   '/use-query': typeof UseQueryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/infinite-query' | '/use-query'
+  fullPaths:
+    | '/'
+    | '/cache-stale-time'
+    | '/infinite-query'
+    | '/use-mutation'
+    | '/use-query'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/infinite-query' | '/use-query'
-  id: '__root__' | '/' | '/infinite-query' | '/use-query'
+  to:
+    | '/'
+    | '/cache-stale-time'
+    | '/infinite-query'
+    | '/use-mutation'
+    | '/use-query'
+  id:
+    | '__root__'
+    | '/'
+    | '/cache-stale-time'
+    | '/infinite-query'
+    | '/use-mutation'
+    | '/use-query'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CacheStaleTimeRoute: typeof CacheStaleTimeRoute
   InfiniteQueryRoute: typeof InfiniteQueryRoute
+  UseMutationRoute: typeof UseMutationRoute
   UseQueryRoute: typeof UseQueryRoute
 }
 
@@ -68,11 +104,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseQueryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/use-mutation': {
+      id: '/use-mutation'
+      path: '/use-mutation'
+      fullPath: '/use-mutation'
+      preLoaderRoute: typeof UseMutationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/infinite-query': {
       id: '/infinite-query'
       path: '/infinite-query'
       fullPath: '/infinite-query'
       preLoaderRoute: typeof InfiniteQueryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cache-stale-time': {
+      id: '/cache-stale-time'
+      path: '/cache-stale-time'
+      fullPath: '/cache-stale-time'
+      preLoaderRoute: typeof CacheStaleTimeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,7 +137,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CacheStaleTimeRoute: CacheStaleTimeRoute,
   InfiniteQueryRoute: InfiniteQueryRoute,
+  UseMutationRoute: UseMutationRoute,
   UseQueryRoute: UseQueryRoute,
 }
 export const routeTree = rootRouteImport

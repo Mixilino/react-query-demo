@@ -97,16 +97,6 @@ export const InfinitePostsList: React.FC<InfinitePostsListProps> = ({
         ))}
       </Box>
 
-      {/* Loading more indicator */}
-      {isFetchingNextPage && (
-        <Box sx={{ textAlign: 'center', py: 3 }}>
-          <LinearProgress sx={{ width: '100%', mb: 2 }} />
-          <Typography variant="body2" color="text.secondary">
-            Loading more posts...
-          </Typography>
-        </Box>
-      )}
-
       {/* Load more button or auto-scroll trigger */}
       {hasNextPage && (
         <Box 
@@ -128,9 +118,20 @@ export const InfinitePostsList: React.FC<InfinitePostsListProps> = ({
               {isFetchingNextPage ? "Loading..." : "Load More Posts"}
             </Button>
           ) : (
-            <Typography variant="body2" color="text.secondary">
-              {isFetchingNextPage ? "Loading more posts..." : "Scroll down to load more"}
-            </Typography>
+            <Box>
+              {isFetchingNextPage ? (
+                <Box sx={{ textAlign: 'center' }}>
+                  <LinearProgress sx={{ width: '100%', mb: 2 }} />
+                  <Typography variant="body2" color="text.secondary">
+                    Loading more posts...
+                  </Typography>
+                </Box>
+              ) : (
+                <Typography variant="body2" color="text.secondary">
+                  Scroll down to load more
+                </Typography>
+              )}
+            </Box>
           )}
         </Box>
       )}

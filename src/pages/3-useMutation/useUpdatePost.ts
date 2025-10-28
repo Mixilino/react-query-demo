@@ -13,13 +13,12 @@ const useUpdatePost = () => {
 
   return useMutation<Post, Error, UpdatePostData>(
     (updatedPost) => {
-      // Get the current post data to preserve userId
       const currentPost = queryClient.getQueryData<Post>(["post", updatedPost.id]);
       const fullPost: Post = {
         id: updatedPost.id,
         title: updatedPost.title,
         body: updatedPost.body,
-        userId: currentPost?.userId || 1, // fallback to userId 1 if not found
+        userId: currentPost?.userId || 1,
       };
       return updatePost(fullPost);
     },

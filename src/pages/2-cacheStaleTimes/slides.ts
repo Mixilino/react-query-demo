@@ -3,7 +3,7 @@ import type { Slide } from "../../types/presentation";
 export const slides: Slide[] = [
   {
     subtitle: "cacheTime and staleTime",
-    bulletPoints: ["fresh, stale data", "default: 0 (no cache)"],
+    bulletPoints: ["fresh, stale data"],
   },
   {
     subtitle: "cacheTime",
@@ -11,6 +11,7 @@ export const slides: Slide[] = [
       "Controls how long inactive queries stay in memory after they become unused",
       "After cacheTime expires, data is garbage collected",
       "Cached data = instant loading on remount",
+      "default: 5 minutes (300,000ms)",
     ],
   },
   {

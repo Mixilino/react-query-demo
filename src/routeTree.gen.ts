@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UseQueryRouteImport } from './routes/use-query'
 import { Route as UseMutationRouteImport } from './routes/use-mutation'
+import { Route as PaginationRouteImport } from './routes/pagination'
 import { Route as InfiniteQueryRouteImport } from './routes/infinite-query'
 import { Route as CacheStaleTimeRouteImport } from './routes/cache-stale-time'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const UseQueryRoute = UseQueryRouteImport.update({
 const UseMutationRoute = UseMutationRouteImport.update({
   id: '/use-mutation',
   path: '/use-mutation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaginationRoute = PaginationRouteImport.update({
+  id: '/pagination',
+  path: '/pagination',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InfiniteQueryRoute = InfiniteQueryRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cache-stale-time': typeof CacheStaleTimeRoute
   '/infinite-query': typeof InfiniteQueryRoute
+  '/pagination': typeof PaginationRoute
   '/use-mutation': typeof UseMutationRoute
   '/use-query': typeof UseQueryRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cache-stale-time': typeof CacheStaleTimeRoute
   '/infinite-query': typeof InfiniteQueryRoute
+  '/pagination': typeof PaginationRoute
   '/use-mutation': typeof UseMutationRoute
   '/use-query': typeof UseQueryRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cache-stale-time': typeof CacheStaleTimeRoute
   '/infinite-query': typeof InfiniteQueryRoute
+  '/pagination': typeof PaginationRoute
   '/use-mutation': typeof UseMutationRoute
   '/use-query': typeof UseQueryRoute
 }
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cache-stale-time'
     | '/infinite-query'
+    | '/pagination'
     | '/use-mutation'
     | '/use-query'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cache-stale-time'
     | '/infinite-query'
+    | '/pagination'
     | '/use-mutation'
     | '/use-query'
   id:
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cache-stale-time'
     | '/infinite-query'
+    | '/pagination'
     | '/use-mutation'
     | '/use-query'
   fileRoutesById: FileRoutesById
@@ -91,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CacheStaleTimeRoute: typeof CacheStaleTimeRoute
   InfiniteQueryRoute: typeof InfiniteQueryRoute
+  PaginationRoute: typeof PaginationRoute
   UseMutationRoute: typeof UseMutationRoute
   UseQueryRoute: typeof UseQueryRoute
 }
@@ -109,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/use-mutation'
       fullPath: '/use-mutation'
       preLoaderRoute: typeof UseMutationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pagination': {
+      id: '/pagination'
+      path: '/pagination'
+      fullPath: '/pagination'
+      preLoaderRoute: typeof PaginationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/infinite-query': {
@@ -139,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CacheStaleTimeRoute: CacheStaleTimeRoute,
   InfiniteQueryRoute: InfiniteQueryRoute,
+  PaginationRoute: PaginationRoute,
   UseMutationRoute: UseMutationRoute,
   UseQueryRoute: UseQueryRoute,
 }

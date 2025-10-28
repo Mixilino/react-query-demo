@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import InfiniteQueryPage from '../pages/9-infiniteQuery/InfiniteQueryPage'
+import Page from '../pages/5-infiniteQuery/Page'
 
 export const Route = createFileRoute('/infinite-query')({
-  component: InfiniteQueryPage,
+  component: Page,
 })

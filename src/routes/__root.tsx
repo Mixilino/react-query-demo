@@ -20,7 +20,8 @@ const navigation = [
   { to: '/use-query', label: '1. useQuery' },
   { to: '/cache-stale-time', label: '2. Cache & Stale Time' },
   { to: '/use-mutation', label: '3. useMutation' },
-  { to: '/infinite-query', label: '9. Infinite Query' },
+  { to: '/pagination', label: '4. Pagination' },
+  { to: '/infinite-query', label: '5. Infinite Query' },
 ]
 
 function RootComponent() {

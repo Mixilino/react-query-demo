@@ -135,7 +135,7 @@ export default function Page() {
         </Stack>
       </Paper>
 
-      <Divider sx={{ my: 4 }} />
+      {/* <Divider sx={{ my: 4 }} />
 
       <Paper elevation={1} sx={{ p: 3 }}>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
@@ -194,7 +194,7 @@ export default function Page() {
             4. <strong>Navigate between pages</strong> to see keepPreviousData preventing loading flickers
           </Typography>
         </Box>
-      </Paper>
+      </Paper> */}
 
       {/* Edit Modal */}
       <PostEditModal

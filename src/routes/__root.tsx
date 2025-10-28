@@ -22,6 +22,7 @@ const navigation = [
   { to: '/use-mutation', label: '3. useMutation' },
   { to: '/pagination', label: '4. Pagination' },
   { to: '/infinite-query', label: '5. Infinite Query' },
+  { to: '/clean-architecture', label: '6. Clean Architecture' },
 ]
 
 function RootComponent() {
